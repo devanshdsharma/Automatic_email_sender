@@ -1,0 +1,48 @@
+// main
+
+function send_1st_email() {
+  var app = SpreadsheetApp.getActiveSpreadsheet()
+  var main = app.getSheetByName("main")
+  var main_LR = main.getLastRow()
+  var Y_Col = main.getRange("C2:C").getValues()
+  var last_Y = Y_Col.filter(String).length + 1
+  var write_Y_rng =  main.getRange("C2:C")
+  var name_vals = main.getRange("A2:A").getValues()
+  var email_vals = main.getRange("B2:B").getValues()
+  var subject = 'Validation de votre compte Auto1'
+  var sender_1 = main.getRange("E1").getValue() // full name
+  var sender_2 = main.getRange("E2").getValue() //first name only
+  
+  for (var i = (last_Y - 1); i < (main_LR - 1); i++){
+    var recepient = email_vals[i]
+    Logger.log(recepient)
+    var name = name_vals[i]
+      var body =
+      "<p>Hello " + name + ", </p>" +
+        "<p>this is the first line of the email <\p>" +
+          "<p> And here is the second line, <b> Here is some text in bold </b> <br />" +
+            " &#9679; Your important list's first item - <b> with some bold text </b> <br />" +
+              " &#9679; Your 2nd item </b> something really important <br /> </p>" +
+                "<p> Please feel free to contact me @ devanshdsharma@gmail.com </p>" +
+                  "<p> </p>" +
+                    "<p> </p>" +
+                  "<p> Best Regards </p>" +
+                  "<p>" + sender_1 + "</p>" +
+                  '<p><img src="" alt="" width="200" height="72" />' + 
+                    "<br /> <i> sample image, replce this with your logo ! </i> </p>"
+    
+          GmailApp.sendEmail(
+            recepient,                            // recipient
+            subject,                                 // subject
+            "",
+            {                                  // body
+              name: sender_2 + " d'Auto1",
+              htmlBody: body
+            }
+          )
+  }
+  for (var j = (last_Y+1); j <= main_LR; j ++){
+     main.getRange(j , 3).setValue("Y")
+  }
+  
+}
