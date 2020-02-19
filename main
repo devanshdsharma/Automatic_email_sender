@@ -28,7 +28,7 @@ function send_1st_email() {
                     "<p> </p>" +
                   "<p> Best Regards </p>" +
                   "<p>" + sender_1 + "</p>" +
-                  '<p><img src="" alt="" width="200" height="72" />' + 
+                  '<p><img src="https://en.wikipedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg" alt="" width="200" height="72" />' + 
                     "<br /> <i> sample image, replce this with your logo ! </i> </p>"
     
           GmailApp.sendEmail(
